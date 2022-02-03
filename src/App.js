@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
 import SearchBox from "./components/SearchBox";
+import CardList from "./components/CardList";
+
 import './components/card-list.styles.css'
 import './App.css';
 
@@ -26,19 +28,7 @@ function App() {
     return (
         <div className="App">
             <SearchBox placeholder="Search monsters.." handleChange={handleChange} />
-            <ul className="card-list">
-                {
-                    filteredMonsters.map(monster => (
-                        <li key={monster.id} className="card">
-                            <div>{monster.name}</div>
-                            <img
-                                src={`https://robohash.org/${monster.id}?set=set?&size=180x180`}
-                                alt={monster.name}
-                            />
-                        </li>
-                    ))
-                }
-            </ul>
+            <CardList monsters={filteredMonsters} />
         </div>
     );
 }
