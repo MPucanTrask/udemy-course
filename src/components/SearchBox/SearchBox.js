@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 
 // eslint-disable-next-line react/prop-types
 function SearchBox({ handleChange }) {
+  const disableEnter = (event) => event.key === 'Enter' && event.preventDefault();
+
   return (
     <Box
       component="form"
@@ -19,6 +21,7 @@ function SearchBox({ handleChange }) {
         label="Search monster"
         variant="outlined"
         onChange={handleChange}
+        onKeyPress={disableEnter}
       />
     </Box>
   );

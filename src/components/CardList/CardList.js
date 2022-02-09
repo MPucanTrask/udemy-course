@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import CustomCard from '../CustomCard/CustomCard';
 
 // eslint-disable-next-line react/prop-types
-function CardList({ monsters }) {
+function CardList({ isFetching, monsters }) {
   return (
     <Grid
       container
@@ -14,7 +14,7 @@ function CardList({ monsters }) {
       columns={{ xs: 4, sm: 8, md: 12 }}
       sx={{ p: '2rem 0' }}
     >
-      <CustomCard monsters={monsters} />
+      <CustomCard isFetching={isFetching} monsters={monsters} />
     </Grid>
   );
 }
