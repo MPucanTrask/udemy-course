@@ -1,47 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import Container from '@mui/material/Container';
 import { grey } from '@mui/material/colors';
-import SearchBox from './components/SearchBox/SearchBox';
+import Header from './components/Header/Header';
 import CardList from './components/CardList/CardList';
+import { getFetchedData } from './services/UserService/UserService';
 
 function App() {
   const [monsters, setMonsters] = useState([]);
   const [searchField, setSearchField] = useState('');
-  const [isFetching, setFetching] = useState(true);
 
-  const handleChange = (event) => setSearchField(event.target.value);
+  const handleFilterChange = (event) => setSearchField(event.target.value);
   const filteredMonsters = monsters.filter((monster) => (
     monster.name.toLowerCase().includes(searchField.toLowerCase())
   ));
 
-  const fetchData = () => fetch('https://jsonplaceholder.typicode.com/users')
-    .then((response) => response.json())
-    .then((users) => {
-      setFetching(false);
-      setMonsters(users);
-    })
-    // eslint-disable-next-line no-console
-    .catch((e) => console.error(e));
+  function getAllMonsters() {
+    getFetchedData()
+      .then((users) => setMonsters(users));
+  }
 
   useEffect(() => {
-    fetchData();
+    getAllMonsters();
   }, []);
 
-  // eslint-disable-next-line no-console
-  console.log(isFetching);
+  const containerStyle = {
+    minHeight: '100vh',
+    borderLeft: 1,
+    borderRight: 1,
+    borderColor: grey[300],
+  };
 
   return (
-    <Container
-      maxWidth="md"
-      sx={{
-        minHeight: '100vh',
-        borderLeft: 1,
-        borderRight: 1,
-        borderColor: grey[300],
-      }}
-    >
-      <SearchBox placeholder="Search monsters.." handleChange={handleChange} />
-      <CardList isFetching={isFetching} monsters={filteredMonsters} />
+    <Container maxWidth="md" sx={containerStyle}>
+      <Header handleFilterChange={handleFilterChange} />
+      <CardList monsters={filteredMonsters} />
     </Container>
   );
 }
