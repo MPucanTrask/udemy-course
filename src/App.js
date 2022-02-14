@@ -1,39 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import Container from '@mui/material/Container';
-import { grey } from '@mui/material/colors';
-import Header from './components/Header/Header';
-import CardList from './components/CardList/CardList';
-import { getFetchedData } from './services/UserService/UserService';
+import { Pagination } from '@mui/material';
+import Box from '@mui/material/Box';
+import CardList from './components/CardList';
+import { getFetchedResponse } from './services/UserService';
+import { containerStyle } from './externalStyle';
+import Header from './components/Header';
 
 function App() {
-  const [monsters, setMonsters] = useState([]);
+  const [users, setUsers] = useState([]);
   const [searchField, setSearchField] = useState('');
 
   const handleFilterChange = (event) => setSearchField(event.target.value);
-  const filteredMonsters = monsters.filter((monster) => (
-    monster.name.toLowerCase().includes(searchField.toLowerCase())
+  const filterUsersByName = users.filter((user) => (
+    user.first_name.toLowerCase().includes(searchField.toLowerCase())
   ));
 
-  function getAllMonsters() {
-    getFetchedData()
-      .then((users) => setMonsters(users));
+  function getAllUsers() {
+    getFetchedResponse()
+      .then(({ data }) => setUsers(data));
   }
 
   useEffect(() => {
-    getAllMonsters();
+    getAllUsers();
   }, []);
-
-  const containerStyle = {
-    minHeight: '100vh',
-    borderLeft: 1,
-    borderRight: 1,
-    borderColor: grey[300],
-  };
 
   return (
     <Container maxWidth="md" sx={containerStyle}>
       <Header handleFilterChange={handleFilterChange} />
-      <CardList monsters={filteredMonsters} />
+      <CardList users={filterUsersByName} />
+      <Box display="flex" justifyContent="flex-end">
+        {filterUsersByName.length > 10 && <Pagination count={10} shape="rounded" />}
+      </Box>
     </Container>
   );
 }
