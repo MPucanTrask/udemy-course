@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
+
 import Container from '@mui/material/Container';
-import { Pagination } from '@mui/material';
-import Box from '@mui/material/Box';
-import CardList from './components/CardList';
+
 import { getFetchedResponse } from './services/UserService';
 import { containerStyle } from './externalStyle';
+
 import Header from './components/Header';
+import CardList from './components/CardList';
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -26,9 +27,6 @@ function App() {
     <Container maxWidth="md" sx={containerStyle}>
       <Header onChange={handleFilterChange} />
       <CardList users={filterUsersByName} />
-      <Box display="flex" justifyContent="flex-end">
-        {filterUsersByName.length > 10 && <Pagination count={10} shape="rounded" />}
-      </Box>
     </Container>
   );
 }
