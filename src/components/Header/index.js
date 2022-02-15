@@ -9,7 +9,6 @@ import AddButton from './AddButton';
 import FormField from './Form/FormField';
 import SearchBox from './SearchBox';
 
-// eslint-disable-next-line react/prop-types
 function Header({ onChange }) {
   const [open, setOpen] = useState(false);
 
@@ -25,15 +24,11 @@ function Header({ onChange }) {
 
   const textFields = getFormFields(fields);
 
-  function validateForm(inputs) {
-    Object.keys();
-  }
-
   function handleSubmit(event) {
     event.preventDefault();
 
     try {
-      // validateForm(fields);
+      // eslint-disable-next-line no-console
       console.log(fields);
     } catch (e) {
       throw new Error(e);

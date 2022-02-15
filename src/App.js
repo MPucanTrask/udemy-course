@@ -16,10 +16,7 @@ function App() {
     user.first_name.toLowerCase().includes(searchField.toLowerCase())
   ));
 
-  function getAllUsers() {
-    getFetchedResponse()
-      .then(({ data }) => setUsers(data));
-  }
+  const getAllUsers = () => getFetchedResponse().then(({ data }) => setUsers(data));
 
   useEffect(() => {
     getAllUsers();

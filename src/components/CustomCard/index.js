@@ -4,7 +4,6 @@ import CardHeader from '@mui/material/CardHeader';
 import Avatar from '@mui/material/Avatar';
 import { red, yellow } from '@mui/material/colors';
 import Grid from '@mui/material/Grid';
-// import Box from '@mui/material/Box';
 
 const CustomCard = ({ users }) => (
   users.map((user) => (

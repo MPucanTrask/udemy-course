@@ -2,7 +2,6 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import CustomCard from '../CustomCard';
 
-// eslint-disable-next-line react/prop-types
 function CardList({ users }) {
   return (
     <Grid

@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 
-// eslint-disable-next-line react/prop-types
 function AddButton({ onClick, title }) {
   return (
     <Button
