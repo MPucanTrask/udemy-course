@@ -24,7 +24,7 @@ function App() {
 
   return (
     <Container maxWidth="md" sx={containerStyle}>
-      <Header handleFilterChange={handleFilterChange} />
+      <Header onChange={handleFilterChange} />
       <CardList users={filterUsersByName} />
       <Box display="flex" justifyContent="flex-end">
         {filterUsersByName.length > 10 && <Pagination count={10} shape="rounded" />}

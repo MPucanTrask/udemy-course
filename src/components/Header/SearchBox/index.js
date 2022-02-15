@@ -7,9 +7,9 @@ function SearchBox({ onChange }) {
   return (
     <TextField
       id="basic-search"
-      label="Search monster"
+      label="Search users"
       variant="outlined"
-      placeholder="Search monsters.."
+      placeholder="Search users.."
       onChange={onChange}
       onKeyPress={disableEnter}
     />
