@@ -3,13 +3,13 @@ export function getFormFields(fields) {
   return [
     {
       id: 'first_name',
-      title: 'firstName',
+      type: 'text',
       label: 'First Name',
       value: fields.first_name,
     },
     {
       id: 'last_name',
-      type: 'lastName',
+      type: 'text',
       label: 'Last Name',
       value: fields.last_name,
     },
@@ -21,7 +21,7 @@ export function getFormFields(fields) {
     },
     {
       id: 'avatar',
-      type: 'avatar',
+      type: 'url',
       label: 'Avatar URL',
       value: fields.avatar,
     },

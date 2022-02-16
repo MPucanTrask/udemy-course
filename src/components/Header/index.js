@@ -28,7 +28,6 @@ function Header({ onChange }) {
     event.preventDefault();
 
     try {
-      // eslint-disable-next-line no-console
       console.log(fields);
     } catch (e) {
       throw new Error(e);
@@ -37,7 +36,7 @@ function Header({ onChange }) {
 
   return (
     <Box component="header" sx={headerStyle}>
-      <AddButton onClick={handleOpen} title="Add Post" />
+      <AddButton onClick={handleOpen} title="Add User" />
       <Modal
         open={open}
         onClose={handleClose}
